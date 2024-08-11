@@ -5,6 +5,8 @@
 //  Created by iAsad on 09/08/2024.
 //
 
+
+
 import UserNotifications
 import CoreData
 import Network
@@ -14,56 +16,34 @@ class NotificationManager {
     static let shared = NotificationManager()
     private init() {}
 
-//    func scheduleDailyNotification() {
-//        let content = UNMutableNotificationContent()
-//        content.title = "Drink Suggestion"
-//        content.body = "Check out a random drink recipe!"
-//        content.sound = .default
-//        
-//        let triggerDate = DateComponents(hour: 14, minute: 0)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
-//        
-//        let request = UNNotificationRequest(identifier: "daily_drink_notification", content: content, trigger: trigger)
-//        UNUserNotificationCenter.current().add(request) { error in
-//            if let error = error {
-//                print("Error scheduling notification: \(error)")
-//            }
-//        }
-//    }
+    // Reference to the view controller to present alerts
+    weak var viewController: UIViewController?
+
     
-    func scheduleDailyNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Drink Suggestion"
-        content.body = "Check out a random drink recipe!"
-        content.sound = .default
-        
-        // Set the time to 4:52 AM
-        let triggerDate = DateComponents(hour: 4, minute: 52)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: "daily_drink_notification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling notification: \(error)")
-            }
-        }
-    }
-    
-    func triggerImmediateNotification() {
+    // half an hour time perios set it to 1 to 5 to get immediate notification
+    func scheduleMealNotification() {
+
         if isOnline() {
             fetchDrinkFromAPI { drink in
-                self.sendNotification(for: drink)
+                self.sendNotification(for: drink, timeInterval: 30 * 60)
             }
         } else {
             fetchDrinkFromCoreData { drink in
-                self.sendNotification(for: drink)
+                self.sendNotification(for: drink, timeInterval: 30 * 60)
             }
         }
+        
+        
+        // Show an immediate alert to the user
+        DispatchQueue.main.async {
+            self.showMealStartedAlert()
+        }
     }
-    
+
+
+
     private func isOnline() -> Bool {
         // Implement network reachability check
-        // Example using NWPathMonitor from Network framework
         let monitor = NWPathMonitor()
         let semaphore = DispatchSemaphore(value: 0)
         var online = false
@@ -81,9 +61,8 @@ class NotificationManager {
         return online
     }
 
-    
     private func fetchDrinkFromAPI(completion: @escaping (Drink) -> Void) {
-        NetworkManager.shared.fetchDrinks(searchTerm: "") { result in
+        NetworkManager.shared.fetchDrinks(searchTerm: "margarita", searchType: .byName) { result in
             switch result {
             case .success(let drinks):
                 if !drinks.isEmpty {
@@ -95,49 +74,84 @@ class NotificationManager {
                 }
             case .failure(let error):
                 print("Error fetching drinks from API: \(error)")
+                //knwdkjd
             }
         }
     }
-    
+
     private func fetchDrinkFromCoreData(completion: @escaping (Drink) -> Void) {
         let favorites = FavoritesManager.shared.fetchFavorites()
         if let randomDrink = favorites.randomElement() {
             completion(randomDrink)
         } else {
             print("No drinks found in Core Data")
-            
         }
     }
-    
-    private func sendNotification(for drink: Drink) {
+
+    private func sendNotification(for drink: Drink, timeInterval: TimeInterval) {
         let content = UNMutableNotificationContent()
         content.title = "Drink Suggestion"
         content.body = "\(drink.strDrink)"
         content.sound = .default
         
+        // Add image to the notification
         if let url = URL(string: drink.strDrinkThumb) {
-            // Load image data from URL or use placeholder if URL is unavailable
-            let data: Data
-            if isOnline(), let imageData = try? Data(contentsOf: url) {
-                data = imageData
+            if isOnline() {
+                SDWebImageManager.shared.loadImage(with: url, options: [], progress: nil) { image, data, error, cacheType, finished, url in
+                    if let image = image, let imageData = image.jpegData(compressionQuality: 1.0) {
+                        if let attachment = UNNotificationAttachment.create(imageData: imageData, withIdentifier: drink.idDrink) {
+                            content.attachments = [attachment]
+                        }
+                    } else {
+                        print("Error loading image: \(String(describing: error))")
+                    }
+                    
+                    // Schedule notification with the specified time interval
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+                    let request = UNNotificationRequest(identifier: "immediate_drink_notification", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request) { error in
+                        if let error = error {
+                            print("Error scheduling immediate notification: \(error)")
+                        }
+                    }
+                }
             } else {
-                // Use a local placeholder image or a default image for offline mode
-                data = UIImage(named: "placeholder_image")?.jpegData(compressionQuality: 1.0) ?? Data()
+                let placeholderData = UIImage(named: "placeholder_image")?.jpegData(compressionQuality: 1.0) ?? Data()
+                if let attachment = UNNotificationAttachment.create(imageData: placeholderData, withIdentifier: drink.idDrink) {
+                    content.attachments = [attachment]
+                }
+                
+                // Schedule notification with the specified time interval
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+                let request = UNNotificationRequest(identifier: "immediate_drink_notification", content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error = error {
+                        print("Error scheduling immediate notification: \(error)")
+                    }
+                }
             }
-            
-            if let attachment = UNNotificationAttachment.create(imageData: data, withIdentifier: drink.idDrink) {
-                content.attachments = [attachment]
+        } else {
+            // Schedule notification with the specified time interval
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+            let request = UNNotificationRequest(identifier: "immediate_drink_notification", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error scheduling immediate notification: \(error)")
+                }
             }
         }
+    }
+
+    
+
+
+    private func showMealStartedAlert() {
+        guard let viewController = viewController else { return }
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let alert = UIAlertController(title: "Meal Started", message: "You have started your meal. Enjoy!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        let request = UNNotificationRequest(identifier: "immediate_drink_notification", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling immediate notification: \(error)")
-            }
-        }
+        viewController.present(alert, animated: true, completion: nil)
     }
 }
 

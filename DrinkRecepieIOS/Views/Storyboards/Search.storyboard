@@ -30,19 +30,29 @@
                                         </connections>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-VZ-6q9">
-                                        <rect key="frame" x="0.0" y="44" width="393" height="705"/>
+                                        <rect key="frame" x="0.0" y="75" width="393" height="674"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iEU-b8-7o0">
+                                        <rect key="frame" x="0.0" y="44" width="393" height="32"/>
+                                        <segments>
+                                            <segment title="By Name"/>
+                                            <segment title="By Alphabet"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="iEU-b8-7o0" firstAttribute="leading" secondItem="kS8-lD-RZu" secondAttribute="leading" id="1bM-2q-pd2"/>
+                                    <constraint firstItem="JIg-VZ-6q9" firstAttribute="top" secondItem="iEU-b8-7o0" secondAttribute="bottom" id="3P1-F1-kgv"/>
                                     <constraint firstItem="ug3-hm-LEw" firstAttribute="top" secondItem="kS8-lD-RZu" secondAttribute="top" id="BHJ-wm-D03"/>
                                     <constraint firstItem="JIg-VZ-6q9" firstAttribute="leading" secondItem="kS8-lD-RZu" secondAttribute="leading" id="CgR-Qz-OM2"/>
                                     <constraint firstItem="ug3-hm-LEw" firstAttribute="leading" secondItem="kS8-lD-RZu" secondAttribute="leading" id="EQQ-bv-QGW"/>
                                     <constraint firstAttribute="trailing" secondItem="JIg-VZ-6q9" secondAttribute="trailing" id="H8F-Yy-E1k"/>
+                                    <constraint firstAttribute="trailing" secondItem="iEU-b8-7o0" secondAttribute="trailing" id="cRm-nB-HhN"/>
+                                    <constraint firstItem="iEU-b8-7o0" firstAttribute="top" secondItem="ug3-hm-LEw" secondAttribute="bottom" id="iex-li-tlJ"/>
                                     <constraint firstAttribute="bottom" secondItem="JIg-VZ-6q9" secondAttribute="bottom" id="lXV-PV-lEv"/>
                                     <constraint firstAttribute="trailing" secondItem="ug3-hm-LEw" secondAttribute="trailing" id="qhE-jl-Uif"/>
-                                    <constraint firstItem="JIg-VZ-6q9" firstAttribute="top" secondItem="ug3-hm-LEw" secondAttribute="bottom" id="w8Q-gD-4gS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -63,6 +73,7 @@
                         <outlet property="favouritesButton" destination="Aoc-TM-QSO" id="OFZ-UM-q5u"/>
                         <outlet property="notifyItem" destination="QaB-tC-fCk" id="Myr-1D-oep"/>
                         <outlet property="searchBar" destination="ug3-hm-LEw" id="ExT-D1-rJm"/>
+                        <outlet property="searchTypeSegmentedControl" destination="iEU-b8-7o0" id="Gic-ey-Arx"/>
                         <outlet property="tableView" destination="JIg-VZ-6q9" id="rOk-IO-sqK"/>
                     </connections>
                 </viewController>

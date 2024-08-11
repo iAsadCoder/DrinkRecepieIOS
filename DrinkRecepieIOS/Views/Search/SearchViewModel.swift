@@ -6,14 +6,13 @@
 //
 
 
-
 import Foundation
 
 class SearchViewModel {
     private(set) var drinks: [Drink] = []
     
-    func fetchDrinks(searchTerm: String, completion: @escaping () -> Void) {
-        NetworkManager.shared.fetchDrinks(searchTerm: searchTerm) { result in
+    func fetchDrinks(searchTerm: String, searchType: SearchType, completion: @escaping () -> Void) {
+        NetworkManager.shared.fetchDrinks(searchTerm: searchTerm, searchType: searchType) { result in
             switch result {
             case .success(let drinks):
                 self.drinks = drinks
@@ -35,7 +34,6 @@ class SearchViewModel {
         if favorites.contains(where: { $0.idDrink == drinkId }) {
             FavoritesManager.shared.removeFavorite(idDrink: drinkId)
         } else {
-            // Fetch the drink details if needed
             if let drink = drinks.first(where: { $0.idDrink == drinkId }) {
                 FavoritesManager.shared.addFavorite(drink: drink)
             }

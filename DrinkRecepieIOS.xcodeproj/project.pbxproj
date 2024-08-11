@@ -30,6 +30,7 @@
 		70300C992C6596D800C47785 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C982C6596D700C47785 /* NotificationManager.swift */; };
 		70E422DE2C675DD5003E3120 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E422DD2C675DD5003E3120 /* FavouritesManager.swift */; };
 		70E422F42C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70E422F22C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld */; };
+		70EF51FE2C68412500783225 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EF51FD2C68412500783225 /* UserDefaultKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		70300C982C6596D700C47785 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		70E422DD2C675DD5003E3120 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 		70E422F32C67F3B5003E3120 /* DrinkRecepie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrinkRecepie.xcdatamodel; sourceTree = "<group>"; };
+		70EF51FD2C68412500783225 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				70300C982C6596D700C47785 /* NotificationManager.swift */,
 				70E422F22C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld */,
+				70EF51FD2C68412500783225 /* UserDefaultKeys.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EF51FE2C68412500783225 /* UserDefaultKeys.swift in Sources */,
 				70300C8E2C65962200C47785 /* CocktailModel.swift in Sources */,
 				70300C922C65966400C47785 /* FavoriteDrinkCell.swift in Sources */,
 				70300C862C65954200C47785 /* FavoritesViewModel.swift in Sources */,

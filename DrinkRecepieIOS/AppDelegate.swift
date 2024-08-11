@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if let error = error {
                                 print("Error requesting notification authorization: \(error)")
-                            }
+                            }/Users/iasad/Desktop/DrinkRecepieIOS
             }
             UNUserNotificationCenter.current().delegate = self
             return true
