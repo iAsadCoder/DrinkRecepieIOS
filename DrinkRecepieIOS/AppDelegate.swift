@@ -7,16 +7,54 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+                if let error = error {
+                                print("Error requesting notification authorization: \(error)")
+                            }
+            }
+            UNUserNotificationCenter.current().delegate = self
+            return true
+        }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+          print("Notification received in foreground: \(notification)")
+          completionHandler([.alert, .sound])
+      }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) {
+          print("Notification response received: \(response.notification)")
+      }
+
+        func scheduleNotification() {
+            let content = UNMutableNotificationContent()
+            content.title = "Try a New Drink!"
+            content.body = "Here's a drink you might like."
+            content.sound = .default
+            content.userInfo = ["drink_id": "example_drink_id"]
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60 * 60, repeats: false) // Example trigger
+            let request = UNNotificationRequest(identifier: "drink_notification", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Error scheduling notification: \(error)")
+                }
+            }
+        }
+
+        // Handle notification tap
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            let userInfo = response.notification.request.content.userInfo
+            if let drinkId = userInfo["drink_id"] as? String {
+                // Handle drink ID
+            }
+            completionHandler()
+        }
 
     // MARK: UISceneSession Lifecycle
 
@@ -41,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "DrinkRecepieIOS")
+        let container = NSPersistentContainer(name: "DrinkRecepie")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

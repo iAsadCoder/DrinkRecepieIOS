@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier=""/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DrinkEntity" representedClassName="DrinkEntity" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="idDrink" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="strAlcoholic" optional="YES" attributeType="String"/>
+        <attribute name="strDrink" optional="YES" attributeType="String"/>
+        <attribute name="strDrinkThumb" optional="YES" attributeType="String"/>
+    </entity>
+</model>

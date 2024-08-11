@@ -1,28 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mPS-tw-Ijt">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Drinks Recipes -->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SearchViewController" customModule="DrinkRecepieIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kS8-lD-RZu">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" text="margarita" translatesAutoresizingMaskIntoConstraints="NO" id="ug3-hm-LEw">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="GZD-o0-gH7"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="FT5-HY-leO"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-VZ-6q9">
+                                        <rect key="frame" x="0.0" y="44" width="393" height="705"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ug3-hm-LEw" firstAttribute="top" secondItem="kS8-lD-RZu" secondAttribute="top" id="BHJ-wm-D03"/>
+                                    <constraint firstItem="JIg-VZ-6q9" firstAttribute="leading" secondItem="kS8-lD-RZu" secondAttribute="leading" id="CgR-Qz-OM2"/>
+                                    <constraint firstItem="ug3-hm-LEw" firstAttribute="leading" secondItem="kS8-lD-RZu" secondAttribute="leading" id="EQQ-bv-QGW"/>
+                                    <constraint firstAttribute="trailing" secondItem="JIg-VZ-6q9" secondAttribute="trailing" id="H8F-Yy-E1k"/>
+                                    <constraint firstAttribute="bottom" secondItem="JIg-VZ-6q9" secondAttribute="bottom" id="lXV-PV-lEv"/>
+                                    <constraint firstAttribute="trailing" secondItem="ug3-hm-LEw" secondAttribute="trailing" id="qhE-jl-Uif"/>
+                                    <constraint firstItem="JIg-VZ-6q9" firstAttribute="top" secondItem="ug3-hm-LEw" secondAttribute="bottom" id="w8Q-gD-4gS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kS8-lD-RZu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Kfv-MK-hbN"/>
+                            <constraint firstItem="kS8-lD-RZu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Xp2-16-e1w"/>
+                            <constraint firstItem="kS8-lD-RZu" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ro4-16-fxK"/>
+                            <constraint firstAttribute="bottom" secondItem="kS8-lD-RZu" secondAttribute="bottom" id="yFQ-yr-AfD"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Drinks Recipes " id="zXz-Wj-Svf">
+                        <barButtonItem key="leftBarButtonItem" title="Not" image="star.fill" catalog="system" id="Aoc-TM-QSO"/>
+                        <barButtonItem key="rightBarButtonItem" image="bell.fill" catalog="system" id="QaB-tC-fCk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="favouritesButton" destination="Aoc-TM-QSO" id="OFZ-UM-q5u"/>
+                        <outlet property="notifyItem" destination="QaB-tC-fCk" id="Myr-1D-oep"/>
+                        <outlet property="searchBar" destination="ug3-hm-LEw" id="ExT-D1-rJm"/>
+                        <outlet property="tableView" destination="JIg-VZ-6q9" id="rOk-IO-sqK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1867.9389312977098" y="-2.1126760563380285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e0P-zK-Xht">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mPS-tw-Ijt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DrG-5h-c6b">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="2sV-fV-bTy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MoR-da-1YS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941.22137404580144" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

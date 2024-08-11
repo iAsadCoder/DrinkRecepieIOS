@@ -5,86 +5,81 @@
 //  Created by iAsad on 10/08/2024.
 //
 
+import Foundation
 import CoreData
 import UIKit
 
 class FavoritesManager {
     static let shared = FavoritesManager()
-
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private init() {}
 
-    // Core Data stack
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "DrinkModel")
-        container.loadPersistentStores { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
-
-    private var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-
-    func addFavorite(drink: Drink) {
-        let favoriteDrink = FavoriteDrink(context: context)
-        favoriteDrink.idDrink = drink.idDrink
-        favoriteDrink.strDrink = drink.strDrink
-        favoriteDrink.strAlcoholic = drink.strAlcoholic
-        favoriteDrink.strInstructions = drink.strInstructions
-
-        // Save image to file system
-        if let imageUrl = URL(string: drink.strDrinkThumb) {
-            if let imageData = try? Data(contentsOf: imageUrl) {
-                let fileName = UUID().uuidString + ".jpg"
-                let fileURL = getDocumentsDirectory().appendingPathComponent(fileName)
-                try? imageData.write(to: fileURL)
-                favoriteDrink.strDrinkThumbPath = fileName
-            }
-        }
-
-        saveContext()
-    }
-
+    // Fetching all favorite drinks from Core Data
     func fetchFavorites() -> [Drink] {
-        let fetchRequest: NSFetchRequest<FavoriteDrink> = FavoriteDrink.fetchRequest()
-        let favoriteDrinks = (try? context.fetch(fetchRequest)) ?? []
+        let fetchRequest: NSFetchRequest<DrinkEntity> = DrinkEntity.fetchRequest()
         
-        return favoriteDrinks.map { drink in
-            var drinkModel = Drink(idDrink: drink.idDrink!,
-                                   strDrink: drink.strDrink!,
-                                   strDrinkThumb: drink.strDrinkThumbPath != nil ? getDocumentsDirectory().appendingPathComponent(drink.strDrinkThumbPath!).absoluteString : "",
-                                   strAlcoholic: drink.strAlcoholic!,
-                                   strInstructions: drink.strInstructions!)
-            drinkModel.isFavorite = true
-            return drinkModel
+        do {
+            let favorites = try context.fetch(fetchRequest)
+            return favorites.map { Drink(
+                idDrink: $0.idDrink ?? "",
+                strDrink: $0.strDrink ?? "",
+                strDrinkThumb: $0.strDrinkThumb ?? "",
+                strAlcoholic: $0.strAlcoholic ?? "",
+                strInstructions: $0.strInstructions ?? "",
+                isFavorite: true
+            )}
+        } catch {
+            print("Error fetching favorites: \(error)")
+            return []
         }
     }
-
-    func removeFavorite(drinkId: String) {
-        let fetchRequest: NSFetchRequest<FavoriteDrink> = FavoriteDrink.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "idDrink == %@", drinkId)
-
-        if let favoriteDrink = (try? context.fetch(fetchRequest))?.first {
-            context.delete(favoriteDrink)
-            saveContext()
-        }
-    }
-
-    private func saveContext() {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    
+    // Adding a drink to favorites
+    func addFavorite(drink: Drink) {
+        let fetchRequest: NSFetchRequest<DrinkEntity> = DrinkEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "idDrink == %@", drink.idDrink)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            
+            if results.isEmpty {
+                let favorite = DrinkEntity(context: context)
+                favorite.idDrink = drink.idDrink
+                favorite.strDrink = drink.strDrink
+                favorite.strDrinkThumb = drink.strDrinkThumb
+                favorite.strAlcoholic = drink.strAlcoholic
+                favorite.strInstructions = drink.strInstructions
+                saveContext()
             }
+        } catch {
+            print("Error adding favorite: \(error)")
         }
     }
-
-    private func getDocumentsDirectory() -> URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+    // Removing a drink from favorites
+    func removeFavorite(idDrink: String) {
+        let fetchRequest: NSFetchRequest<DrinkEntity> = DrinkEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "idDrink == %@", idDrink)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            for favorite in results {
+                context.delete(favorite)
+            }
+            saveContext()
+        } catch {
+            print("Error removing favorite: \(error)")
+        }
+    }
+    
+    // Saving the context
+    private func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context: \(error)")
+        }
     }
 }

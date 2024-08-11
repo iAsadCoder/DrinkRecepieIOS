@@ -9,23 +9,52 @@
 /* Begin PBXBuildFile section */
 		70300C3B2C65819B00C47785 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C3A2C65819B00C47785 /* AppDelegate.swift */; };
 		70300C3D2C65819B00C47785 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C3C2C65819B00C47785 /* SceneDelegate.swift */; };
-		70300C3F2C65819B00C47785 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C3E2C65819B00C47785 /* ViewController.swift */; };
-		70300C422C65819B00C47785 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 70300C412C65819B00C47785 /* Base */; };
-		70300C452C65819B00C47785 /* DrinkRecepieIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70300C432C65819B00C47785 /* DrinkRecepieIOS.xcdatamodeld */; };
 		70300C472C65819D00C47785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70300C462C65819D00C47785 /* Assets.xcassets */; };
 		70300C4A2C65819D00C47785 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 70300C492C65819D00C47785 /* Base */; };
+		70300C532C6581E100C47785 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 70300C522C6581E100C47785 /* SDWebImage */; };
+		70300C552C6581E100C47785 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70300C542C6581E100C47785 /* SDWebImageMapKit */; };
+		70300C712C658D0E00C47785 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 70300C702C658D0E00C47785 /* Alamofire */; };
+		70300C7C2C65936000C47785 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70300C7B2C65936000C47785 /* Search.storyboard */; };
+		70300C7E2C65937300C47785 /* DrinkDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70300C7D2C65937300C47785 /* DrinkDetails.storyboard */; };
+		70300C802C65938A00C47785 /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70300C7F2C65938A00C47785 /* Favourites.storyboard */; };
+		70300C822C6593AC00C47785 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C812C6593AC00C47785 /* SearchViewModel.swift */; };
+		70300C842C6593C600C47785 /* DrinkDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C832C6593C600C47785 /* DrinkDetailsViewModel.swift */; };
+		70300C862C65954200C47785 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C852C65954200C47785 /* FavoritesViewModel.swift */; };
+		70300C882C65955F00C47785 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C872C65955F00C47785 /* SearchViewController.swift */; };
+		70300C8A2C65957E00C47785 /* DrinkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C892C65957E00C47785 /* DrinkDetailsViewController.swift */; };
+		70300C8C2C6595CA00C47785 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C8B2C6595CA00C47785 /* FavouritesViewController.swift */; };
+		70300C8E2C65962200C47785 /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C8D2C65962200C47785 /* CocktailModel.swift */; };
+		70300C922C65966400C47785 /* FavoriteDrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C912C65966400C47785 /* FavoriteDrinkCell.swift */; };
+		70300C942C65968200C47785 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C932C65968200C47785 /* DrinkCell.swift */; };
+		70300C962C6596A900C47785 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C952C6596A900C47785 /* NetworkManager.swift */; };
+		70300C992C6596D800C47785 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70300C982C6596D700C47785 /* NotificationManager.swift */; };
+		70E422DE2C675DD5003E3120 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E422DD2C675DD5003E3120 /* FavouritesManager.swift */; };
+		70E422F42C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70E422F22C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		70300C372C65819B00C47785 /* DrinkRecepieIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkRecepieIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70300C3A2C65819B00C47785 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70300C3C2C65819B00C47785 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		70300C3E2C65819B00C47785 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		70300C412C65819B00C47785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		70300C442C65819B00C47785 /* DrinkRecepieIOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrinkRecepieIOS.xcdatamodel; sourceTree = "<group>"; };
 		70300C462C65819D00C47785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70300C492C65819D00C47785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70300C4B2C65819D00C47785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70300C7B2C65936000C47785 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		70300C7D2C65937300C47785 /* DrinkDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrinkDetails.storyboard; sourceTree = "<group>"; };
+		70300C7F2C65938A00C47785 /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
+		70300C812C6593AC00C47785 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		70300C832C6593C600C47785 /* DrinkDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailsViewModel.swift; sourceTree = "<group>"; };
+		70300C852C65954200C47785 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		70300C872C65955F00C47785 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		70300C892C65957E00C47785 /* DrinkDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailsViewController.swift; sourceTree = "<group>"; };
+		70300C8B2C6595CA00C47785 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		70300C8D2C65962200C47785 /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
+		70300C912C65966400C47785 /* FavoriteDrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDrinkCell.swift; sourceTree = "<group>"; };
+		70300C932C65968200C47785 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
+		70300C952C6596A900C47785 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		70300C982C6596D700C47785 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		70E422DD2C675DD5003E3120 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
+		70E422F32C67F3B5003E3120 /* DrinkRecepie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrinkRecepie.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70300C712C658D0E00C47785 /* Alamofire in Frameworks */,
+				70300C552C6581E100C47785 /* SDWebImageMapKit in Frameworks */,
+				70300C532C6581E100C47785 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,16 +90,93 @@
 		70300C392C65819B00C47785 /* DrinkRecepieIOS */ = {
 			isa = PBXGroup;
 			children = (
+				70300C742C6592F800C47785 /* Views */,
+				70300C752C65930300C47785 /* Models */,
+				70300C762C65930A00C47785 /* Networking */,
+				70300C972C6596C000C47785 /* SupportingFiles */,
 				70300C3A2C65819B00C47785 /* AppDelegate.swift */,
 				70300C3C2C65819B00C47785 /* SceneDelegate.swift */,
-				70300C3E2C65819B00C47785 /* ViewController.swift */,
-				70300C402C65819B00C47785 /* Main.storyboard */,
 				70300C462C65819D00C47785 /* Assets.xcassets */,
 				70300C482C65819D00C47785 /* LaunchScreen.storyboard */,
 				70300C4B2C65819D00C47785 /* Info.plist */,
-				70300C432C65819B00C47785 /* DrinkRecepieIOS.xcdatamodeld */,
 			);
 			path = DrinkRecepieIOS;
+			sourceTree = "<group>";
+		};
+		70300C742C6592F800C47785 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				70300C772C65932000C47785 /* Storyboards */,
+				70300C782C65932900C47785 /* Search */,
+				70300C792C65933300C47785 /* DrinkDetails */,
+				70300C7A2C65933B00C47785 /* Favourites */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		70300C752C65930300C47785 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				70300C8D2C65962200C47785 /* CocktailModel.swift */,
+				70E422DD2C675DD5003E3120 /* FavouritesManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		70300C762C65930A00C47785 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				70300C952C6596A900C47785 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		70300C772C65932000C47785 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				70300C7B2C65936000C47785 /* Search.storyboard */,
+				70300C7D2C65937300C47785 /* DrinkDetails.storyboard */,
+				70300C7F2C65938A00C47785 /* Favourites.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		70300C782C65932900C47785 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				70300C812C6593AC00C47785 /* SearchViewModel.swift */,
+				70300C872C65955F00C47785 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		70300C792C65933300C47785 /* DrinkDetails */ = {
+			isa = PBXGroup;
+			children = (
+				70300C832C6593C600C47785 /* DrinkDetailsViewModel.swift */,
+				70300C892C65957E00C47785 /* DrinkDetailsViewController.swift */,
+				70300C932C65968200C47785 /* DrinkCell.swift */,
+			);
+			path = DrinkDetails;
+			sourceTree = "<group>";
+		};
+		70300C7A2C65933B00C47785 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				70300C8B2C6595CA00C47785 /* FavouritesViewController.swift */,
+				70300C852C65954200C47785 /* FavoritesViewModel.swift */,
+				70300C912C65966400C47785 /* FavoriteDrinkCell.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		70300C972C6596C000C47785 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				70300C982C6596D700C47785 /* NotificationManager.swift */,
+				70E422F22C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +195,11 @@
 			dependencies = (
 			);
 			name = DrinkRecepieIOS;
+			packageProductDependencies = (
+				70300C522C6581E100C47785 /* SDWebImage */,
+				70300C542C6581E100C47785 /* SDWebImageMapKit */,
+				70300C702C658D0E00C47785 /* Alamofire */,
+			);
 			productName = DrinkRecepieIOS;
 			productReference = 70300C372C65819B00C47785 /* DrinkRecepieIOS.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +228,10 @@
 				Base,
 			);
 			mainGroup = 70300C2E2C65819B00C47785;
+			packageReferences = (
+				70300C512C6581E100C47785 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				70300C6F2C658D0E00C47785 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 70300C382C65819B00C47785 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,8 +247,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				70300C472C65819D00C47785 /* Assets.xcassets in Resources */,
+				70300C7E2C65937300C47785 /* DrinkDetails.storyboard in Resources */,
+				70300C802C65938A00C47785 /* Favourites.storyboard in Resources */,
 				70300C4A2C65819D00C47785 /* Base in Resources */,
-				70300C422C65819B00C47785 /* Base in Resources */,
+				70300C7C2C65936000C47785 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +261,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70300C452C65819B00C47785 /* DrinkRecepieIOS.xcdatamodeld in Sources */,
-				70300C3F2C65819B00C47785 /* ViewController.swift in Sources */,
+				70300C8E2C65962200C47785 /* CocktailModel.swift in Sources */,
+				70300C922C65966400C47785 /* FavoriteDrinkCell.swift in Sources */,
+				70300C862C65954200C47785 /* FavoritesViewModel.swift in Sources */,
+				70E422F42C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld in Sources */,
+				70300C882C65955F00C47785 /* SearchViewController.swift in Sources */,
+				70300C822C6593AC00C47785 /* SearchViewModel.swift in Sources */,
+				70300C942C65968200C47785 /* DrinkCell.swift in Sources */,
+				70E422DE2C675DD5003E3120 /* FavouritesManager.swift in Sources */,
 				70300C3B2C65819B00C47785 /* AppDelegate.swift in Sources */,
+				70300C842C6593C600C47785 /* DrinkDetailsViewModel.swift in Sources */,
+				70300C962C6596A900C47785 /* NetworkManager.swift in Sources */,
 				70300C3D2C65819B00C47785 /* SceneDelegate.swift in Sources */,
+				70300C992C6596D800C47785 /* NotificationManager.swift in Sources */,
+				70300C8C2C6595CA00C47785 /* FavouritesViewController.swift in Sources */,
+				70300C8A2C65957E00C47785 /* DrinkDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		70300C402C65819B00C47785 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70300C412C65819B00C47785 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		70300C482C65819D00C47785 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -301,7 +424,7 @@
 				INFOPLIST_FILE = DrinkRecepieIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Search;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -329,7 +452,7 @@
 				INFOPLIST_FILE = DrinkRecepieIOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Search;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -368,14 +491,52 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		70300C512C6581E100C47785 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		70300C6F2C658D0E00C47785 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		70300C522C6581E100C47785 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70300C512C6581E100C47785 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		70300C542C6581E100C47785 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70300C512C6581E100C47785 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		70300C702C658D0E00C47785 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70300C6F2C658D0E00C47785 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
-		70300C432C65819B00C47785 /* DrinkRecepieIOS.xcdatamodeld */ = {
+		70E422F22C67F3B5003E3120 /* DrinkRecepie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				70300C442C65819B00C47785 /* DrinkRecepieIOS.xcdatamodel */,
+				70E422F32C67F3B5003E3120 /* DrinkRecepie.xcdatamodel */,
 			);
-			currentVersion = 70300C442C65819B00C47785 /* DrinkRecepieIOS.xcdatamodel */;
-			path = DrinkRecepieIOS.xcdatamodeld;
+			currentVersion = 70E422F32C67F3B5003E3120 /* DrinkRecepie.xcdatamodel */;
+			name = DrinkRecepie.xcdatamodeld;
+			path = /Users/iasad/Desktop/DrinkRecepieIOS/DrinkRecepieIOS/SupportingFiles/DrinkRecepie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class DrinkDetailViewModel {
+    private var drink: Drink?
+
+    func setDrink(drink: Drink) {
+        self.drink = drink
+    }
+
+    func getDrink() -> Drink? {
+        return drink
+    }
+}
