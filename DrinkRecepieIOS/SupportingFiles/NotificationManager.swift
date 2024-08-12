@@ -25,11 +25,11 @@ class NotificationManager {
 
         if isOnline() {
             fetchDrinkFromAPI { drink in
-                self.sendNotification(for: drink, timeInterval: 30 * 60)
+                self.sendNotification(for: drink, timeInterval: 3)//30 * 60)
             }
         } else {
             fetchDrinkFromCoreData { drink in
-                self.sendNotification(for: drink, timeInterval: 30 * 60)
+                self.sendNotification(for: drink, timeInterval: 3)//30 * 60)
             }
         }
         

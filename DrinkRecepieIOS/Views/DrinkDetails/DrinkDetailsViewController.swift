@@ -6,9 +6,6 @@
 //
 
 
-
-
-
 import UIKit
 import SDWebImage // Import SDWebImage for image caching
 
@@ -23,7 +20,6 @@ class DrinkDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubviews()
         configure(with: drink)
     }
